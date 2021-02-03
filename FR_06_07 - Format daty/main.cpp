@@ -43,9 +43,10 @@ int main()
 
     cin >> ilosc;
     for(int i=0; i<ilosc; i++){
-
+    
+    KONIEC:
     cin >> data;
-    //Sprawdzanie poprawnosci danych wejsciowych
+    
     if(data.length()!=8){
         cout << "niepoprawny format daty" << endl;
         goto KONIEC;
@@ -77,7 +78,6 @@ int main()
     else
         cout << dzien << " " << miesiac_s << " " << rok << endl;
 
-        KONIEC:
     }
 
     return 0;
