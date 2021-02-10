@@ -57,9 +57,8 @@ int main()
         cout << "niepoprawny format daty" << endl;
     else if(rok<1000 && rok>2200)
         cout << "niepoprawny format daty" << endl;
-    else if(miesiac_s=="niepoprawny format daty"){
+    else if(miesiac_s=="niepoprawny format daty")
         cout << "niepoprawny format daty" << endl;
-    }
     else if(miesiac_s=="lutego"){
         if((rok%4==0 && rok%100!=0) || rok%400==0){
             if(dzien<30){
@@ -77,9 +76,16 @@ int main()
             }
         }
     }
-    else
-        cout << dzien << " " << miesiac_s << " " << rok << endl;
-
+    else if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
+        if(dzien<32)
+            cout << dzien << " " << miesiac_s << " " << rok << endl;
+        else
+            cout << "niepoprawny format daty" << endl;
+    }else if(miesiac==4 || miesiac==6 || miesiac==9 || miesiac==11)
+        if(dzien<31)
+            cout << dzien << " " << miesiac_s << " " << rok << endl;
+        else
+            cout << "niepoprawny format daty" << endl;
     }
 
     return 0;
