@@ -3,43 +3,11 @@
 
 using namespace std;
 
-string ktorymiesiac(int miesiac){
-    string miesiac_s;
-
-    if(miesiac==1)
-        miesiac_s = "stycznia";
-    else if(miesiac==2)
-        miesiac_s = "lutego";
-    else if(miesiac==3)
-        miesiac_s = "marca";
-    else if(miesiac==4)
-        miesiac_s = "kwietnia";
-    else if(miesiac==5)
-        miesiac_s = "maja";
-    else if(miesiac==6)
-        miesiac_s = "czerwca";
-    else if(miesiac==7)
-        miesiac_s = "lipca";
-    else if(miesiac==8)
-        miesiac_s = "sierpnia";
-    else if(miesiac==9)
-        miesiac_s = "wrzesnia";
-    else if(miesiac==10)
-        miesiac_s = "pazdziernika";
-    else if(miesiac==11)
-        miesiac_s = "listopada";
-    else if(miesiac==12)
-        miesiac_s = "grudnia";
-    else
-        miesiac_s = "niepoprawny format daty";
-
-    return miesiac_s;
-}
-
 int main()
 {
-    string data, miesiac_s;
-    int dzien, miesiac, rok, ilosc, pom=0;
+    string data, miesiace[12] = {"stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca",
+    "sierpnia", "wrzesnia", "pazdziernika", "listopada", "grudnia"};
+    int dzien, miesiac, rok, ilosc, dni[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     cin >> ilosc;
     for(int i=0; i<ilosc; i++){
@@ -47,48 +15,34 @@ int main()
     cin >> data;
 
     dzien = ((data[0]-'0')*10)+(data[1]-'0');
-
     miesiac =((data[2]-'0')*10)+(data[3]-'0');
-    miesiac_s = ktorymiesiac(miesiac);
-
     rok = ((data[4]-'0')*1000)+((data[5]-'0')*100)+((data[6]-'0')*10)+(data[7]-'0');
 
     if(data.length()!=8)
-        cout << "niepoprawny format daty" << endl;
-    else if(rok<1000 && rok>2200)
-        cout << "niepoprawny format daty" << endl;
-    else if(dzien<1 || miesiac<1)
-        cout << "niepoprawny format daty" << endl;
-    else if(miesiac_s=="niepoprawny format daty")
-        cout << "niepoprawny format daty" << endl;
-    else if(miesiac_s=="lutego"){
-        if((rok%4==0 && rok%100!=0) || rok%400==0){
-            if(dzien<30){
-                cout << dzien << " " << miesiac_s << " " << rok << endl;
-            }
-            else{
-                cout << "niepoprawny format daty" << endl;
-            }
-        }else{
-            if(dzien<29){
-                cout << dzien << " " << miesiac_s << " " << rok << endl;
-            }
-            else{
-                cout << "niepoprawny format daty" << endl;
+        cout<<"niepoprawny format daty"<<endl;
+    else{
+        if(dzien<1 || dzien>31|| miesiac<1 || miesiac>12 || rok<1000 || rok>2200)
+            cout<<"niepoprawny format daty"<<endl;
+        else{
+            switch(miesiac){
+            case 1: if(dzien<=dni[0]){cout << dzien << " " << miesiace[0] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 2: if((rok%4==0 && rok%100!=0) || rok%400==0){
+                        if(dzien<=(dni[1]+1)){cout << dzien << " " << miesiace[1] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;}
+                    else{
+                        if(dzien<=dni[1]){cout << dzien << " " << miesiace[1] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;}
+            case 3: if(dzien<=dni[2]){cout << dzien << " " << miesiace[2] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 4: if(dzien<=dni[3]){cout << dzien << " " << miesiace[3] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 5: if(dzien<=dni[4]){cout << dzien << " " << miesiace[4] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 6: if(dzien<=dni[5]){cout << dzien << " " << miesiace[5] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 7: if(dzien<=dni[6]){cout << dzien << " " << miesiace[6] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 8: if(dzien<=dni[7]){cout << dzien << " " << miesiace[7] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 9: if(dzien<=dni[8]){cout << dzien << " " << miesiace[8] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 10: if(dzien<=dni[9]){cout << dzien << " " << miesiace[9] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 11: if(dzien<=dni[10]){cout << dzien << " " << miesiace[10] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
+            case 12: if(dzien<=dni[11]){cout << dzien << " " << miesiace[11] << " " << rok << endl;}else{cout<<"niepoprawny format daty"<<endl;} break;
             }
         }
-    }
-    else if(miesiac==1 || miesiac==3 || miesiac==5 || miesiac==7 || miesiac==8 || miesiac==10 || miesiac==12){
-        if(dzien<32)
-            cout << dzien << " " << miesiac_s << " " << rok << endl;
-        else
-            cout << "niepoprawny format daty" << endl;
-    }else if(miesiac==4 || miesiac==6 || miesiac==9 || miesiac==11)
-        if(dzien<31)
-            cout << dzien << " " << miesiac_s << " " << rok << endl;
-        else
-            cout << "niepoprawny format daty" << endl;
-    }
-
+    }//Else
+    }//For
     return 0;
 }
