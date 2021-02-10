@@ -57,7 +57,7 @@ int main()
         cout << "niepoprawny format daty" << endl;
     else if(rok<1000 && rok>2200)
         cout << "niepoprawny format daty" << endl;
-    else if(dzien<0 || miesiac<0)
+    else if(dzien<1 || miesiac<1)
         cout << "niepoprawny format daty" << endl;
     else if(miesiac_s=="niepoprawny format daty")
         cout << "niepoprawny format daty" << endl;
