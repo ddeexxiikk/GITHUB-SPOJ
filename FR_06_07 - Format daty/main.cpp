@@ -31,7 +31,7 @@ string ktorymiesiac(int miesiac){
     else if(miesiac==12)
         miesiac_s = "grudnia";
     else
-        cout << "niepoprawny format daty" << endl;
+        miesiac_s = "niepoprawny format daty";
 
     return miesiac_s;
 }
@@ -39,18 +39,12 @@ string ktorymiesiac(int miesiac){
 int main()
 {
     string data, miesiac_s;
-    int dzien, miesiac, rok, ilosc;
+    int dzien, miesiac, rok, ilosc, pom=0;
 
     cin >> ilosc;
     for(int i=0; i<ilosc; i++){
-    
-    KONIEC:
+
     cin >> data;
-    
-    if(data.length()!=8){
-        cout << "niepoprawny format daty" << endl;
-        goto KONIEC;
-    }
 
     dzien = ((data[0]-'0')*10)+(data[1]-'0');
 
@@ -59,20 +53,28 @@ int main()
 
     rok = ((data[4]-'0')*1000)+((data[5]-'0')*100)+((data[6]-'0')*10)+(data[7]-'0');
 
-
-    if(miesiac_s=="niepoprawny format daty")
+    if(data.length()!=8)
         cout << "niepoprawny format daty" << endl;
+    else if(rok<1000 && rok>2200)
+        cout << "niepoprawny format daty" << endl;
+    else if(miesiac_s=="niepoprawny format daty"){
+        cout << "niepoprawny format daty" << endl;
+    }
     else if(miesiac_s=="lutego"){
-        if(rok%4==0){
-            if(dzien<30)
+        if((rok%4==0 && rok%100!=0) || rok%400==0){
+            if(dzien<30){
                 cout << dzien << " " << miesiac_s << " " << rok << endl;
-            else
+            }
+            else{
                 cout << "niepoprawny format daty" << endl;
+            }
         }else{
-            if(dzien<29)
+            if(dzien<29){
                 cout << dzien << " " << miesiac_s << " " << rok << endl;
-            else
+            }
+            else{
                 cout << "niepoprawny format daty" << endl;
+            }
         }
     }
     else
