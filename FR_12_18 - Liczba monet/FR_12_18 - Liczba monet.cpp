@@ -4,11 +4,14 @@ using namespace std;
 
 int main()
 {
-    float monety[9]={5.00, 2.00, 1.00, 0.50, 0.20, 0.10, 0.05, 0.02, 0.01};
-    float wejscie;
-    int liczba_monet;
+    float wejscie, monety[9]={500, 200, 100, 50, 20, 10, 5, 2, 1};
+    int liczba_monet, n;
+
+    cin >> n;
+    for(int i=0; i<n; i++){
 
     cin >> wejscie;
+    wejscie*=100;
 
     while(wejscie>0){
         if((wejscie-monety[0])>=0){
@@ -40,8 +43,8 @@ int main()
             liczba_monet++;
         }
     }
+    cout << liczba_monet << endl;
+    }
 
-    cout << liczba_monet;
-    
     return 0;
 }
