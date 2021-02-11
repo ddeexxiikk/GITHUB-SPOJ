@@ -10,7 +10,7 @@ int main()
 
     cin >> wejscie;
 
-    while(wejscie>=0){
+    while(wejscie>0){
         if((wejscie-monety[0])>=0){
             wejscie-=monety[0];
             liczba_monet++;
@@ -42,7 +42,6 @@ int main()
     }
 
     cout << liczba_monet;
-
-
+    
     return 0;
 }
