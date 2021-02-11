@@ -36,7 +36,7 @@ int main()
             wejscie-=monety[7];
             liczba_monet++;
         }else if((wejscie-monety[8])>=0){
-            wejscie-=monety[7];
+            wejscie-=monety[8];
             liczba_monet++;
         }
     }
